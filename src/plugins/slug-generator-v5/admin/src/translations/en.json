@@ -1,0 +1,10 @@
+{
+  "form.label": "Slug Generator 5",
+  "form.description": "A Strapi plugin to generate slug. Supports Strapi v5",
+  "form.options.slugFormat": "Slug Format",
+
+  "__comments__": "Options Label",
+  "form.field.options.description": "Default (Title): Slug will generate based on title field",
+  "form.field.options.default.label": "Default (Title Format)",
+  "form.field.options.default.description": "Slug will generate based on title field"
+}

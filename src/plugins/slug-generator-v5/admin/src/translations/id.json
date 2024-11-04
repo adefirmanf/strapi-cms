@@ -1,0 +1,7 @@
+{
+  "form.label": "Slug Generator 5",
+  "form.description": "Plugin untuk generate slug. Tersedia untuk Strapi v5",
+  "form.field.generate": "Generate",
+  "form.field.options.default.label": "Default",
+  "form.field.options.default.description": "Slug will generate based on title field"
+}
