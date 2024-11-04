@@ -410,13 +410,6 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
   attributes: {
     blog_markdown: Schema.Attribute.RichText & Schema.Attribute.Required;
     blog_tags: Schema.Attribute.Relation<'oneToMany', 'api::blog-tag.blog-tag'>;
-    contents: Schema.Attribute.RichText &
-      Schema.Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'default';
-        }
-      >;
     cover_image: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -430,9 +423,7 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'title'>;
-    test: Schema.Attribute.String &
-      Schema.Attribute.CustomField<'plugin::slug-generator-v5.slug'>;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
