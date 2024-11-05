@@ -39,6 +39,15 @@
       "type": "uid",
       "targetField": "title",
       "required": true
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "archive": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
