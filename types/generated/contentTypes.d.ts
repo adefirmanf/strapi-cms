@@ -417,6 +417,10 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 280;
+      }>;
     featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -455,6 +459,35 @@ export interface ApiBlogTagBlogTag extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     tag: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWelcomePageWelcomePage extends Struct.SingleTypeSchema {
+  collectionName: 'welcome_pages';
+  info: {
+    displayName: 'Welcome page';
+    pluralName: 'welcome-pages';
+    singularName: 'welcome-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::welcome-page.welcome-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -969,6 +1002,7 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::blog-tag.blog-tag': ApiBlogTagBlogTag;
+      'api::welcome-page.welcome-page': ApiWelcomePageWelcomePage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

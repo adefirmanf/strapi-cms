@@ -48,6 +48,10 @@
     "archive": {
       "type": "boolean",
       "default": false
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 280
     }
   }
 }
